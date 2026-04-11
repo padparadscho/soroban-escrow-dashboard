@@ -1,13 +1,29 @@
 # Dependency directories
 node_modules/
 
+# Typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Next.js
+/.next/
+/out/
+
+# Vercel
+.vercel
+
 # dotenv environment variable files
 .env
 .env.local
 
+# Debug
+npm-debug.log*
+.pnpm-debug.log*
+
 # OS generated files
 .DS_Store
 Thumbs.db
+*.pem
 
 # Editor directories and files
 .vscode
