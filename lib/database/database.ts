@@ -1,13 +1,13 @@
 // SPDX-FileCopyrightText: 2026 Padparadscho <contact@padparadscho.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-import { Kysely, PostgresDialect } from "kysely";
-import pg from "pg";
-import "dotenv/config";
-import { DB } from "./schema";
+import { Kysely, PostgresDialect } from 'kysely';
+import pg from 'pg';
+import 'dotenv/config';
+import { DB } from './schema';
 
 if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL has not been set!");
+  throw new Error('DATABASE_URL has not been set!');
 }
 
 const { Pool } = pg;

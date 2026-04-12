@@ -1,12 +1,12 @@
 // SPDX-FileCopyrightText: 2026 Padparadscho <contact@padparadscho.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-import { Migrator, FileMigrationProvider } from "kysely";
-import { db } from "./database";
-import path from "path";
-import fs from "fs/promises";
+import { Migrator, FileMigrationProvider } from 'kysely';
+import { db } from './database';
+import path from 'path';
+import fs from 'fs/promises';
 
-const migrationFolder = path.join(__dirname, "migrations");
+const migrationFolder = path.join(__dirname, 'migrations');
 
 const migrator = new Migrator({
   db,
@@ -18,22 +18,22 @@ const migrator = new Migrator({
  * - "down": rollback the last migration
  * - "list": show migration status
  */
-const option = process.env.MIGRATE_OPTION ?? "latest";
+const option = process.env.MIGRATE_OPTION ?? 'latest';
 
 async function run() {
-  if (option === "list") {
+  if (option === 'list') {
     const migrations = await migrator.getMigrations();
 
     for (const migration of migrations) {
       console.log(
-        `${migration.name} - ${migration.executedAt ? "executed" : "pending"}`,
+        `${migration.name} - ${migration.executedAt ? 'executed' : 'pending'}`,
       );
     }
     await db.destroy();
     return;
   }
 
-  const result = await (option === "latest"
+  const result = await (option === 'latest'
     ? migrator.migrateToLatest()
     : migrator.migrateDown());
 
