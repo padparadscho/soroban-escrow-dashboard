@@ -3,27 +3,115 @@
 
 @import 'tailwindcss';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+
+  --color-pane: var(--pane);
+  --color-pane-foreground: var(--pane-foreground);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0 0 0);
+
+  --primary: oklch(0 0 0);
+  --primary-foreground: oklch(1 0 0);
+
+  --secondary: oklch(0.94 0 0);
+  --secondary-foreground: oklch(0 0 0);
+
+  --accent: oklch(0.94 0 0);
+  --accent-foreground: oklch(0 0 0);
+
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.44 0 0);
+
+  --border: oklch(0.92 0 0);
+
+  --pane: oklch(1 0 0);
+  --pane-foreground: oklch(0 0 0);
+
+  --font-sans: Geist, sans-serif;
+  --font-mono: Geist Mono, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: oklch(0 0 0);
+    --foreground: oklch(1 0 0);
+
+    --primary: oklch(1 0 0);
+    --primary-foreground: oklch(0 0 0);
+
+    --secondary: oklch(0.25 0 0);
+    --secondary-foreground: oklch(1 0 0);
+
+    --accent: oklch(0.32 0 0);
+    --accent-foreground: oklch(1 0 0);
+
+    --muted: oklch(0.23 0 0);
+    --muted-foreground: oklch(0.72 0 0);
+
+    --border: oklch(0.26 0 0);
+
+    --pane: oklch(0.14 0 0);
+    --pane-foreground: oklch(1 0 0);
+
+    --font-sans: Geist, sans-serif;
+    --font-mono: Geist Mono, monospace;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dashboard layout */
+.dashboard-wrap {
+  height: 100dvh;
+  padding: clamp(0.625rem, 1.25vw, 1rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  gap: 0.5rem;
+}
+
+.dashboard-grid {
+  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1.5fr);
+  grid-template-areas:
+    'data chart'
+    'events events';
+}
+
+/* Hide native scrollbar from viewport */
+.scroll-area-viewport {
+  scrollbar-width: none;
+}
+
+.scroll-area-viewport::-webkit-scrollbar {
+  display: none;
 }
