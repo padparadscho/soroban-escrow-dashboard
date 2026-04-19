@@ -6,7 +6,7 @@
 import type { ReactNode } from 'react';
 import NextImage from 'next/image';
 import type { EventsData, PageSize } from '@/lib/types';
-import { ALLOWED_PAGE_SIZES } from '@/lib/types';
+import { AVAILABLE_PAGE_SIZES } from '@/lib/constants';
 import {
   formatAddress,
   formatAmount,
@@ -58,7 +58,7 @@ export function EventsPane({
       {/* Controls */}
       <div className="flex flex-wrap items-center gap-1.5">
         <ToggleGroup>
-          {ALLOWED_PAGE_SIZES.map((size) => (
+          {AVAILABLE_PAGE_SIZES.map((size) => (
             <ToggleItem
               key={size}
               isActive={meta.pageSize === size}

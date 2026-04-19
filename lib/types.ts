@@ -7,11 +7,6 @@ export type TimeRange = '30d' | '90d' | '1y';
 /** Page size type for events pagination */
 export type PageSize = 20 | 50 | 100;
 
-/** Allowed page sizes for events pagination */
-export const ALLOWED_PAGE_SIZES = [
-  20, 50, 100,
-] as const satisfies readonly PageSize[];
-
 /** Layout pane key types */
 export type PaneKey = 'chart' | 'data' | 'events';
 

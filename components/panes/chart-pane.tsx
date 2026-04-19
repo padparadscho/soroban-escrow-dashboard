@@ -6,6 +6,7 @@
 import type { ReactNode } from 'react';
 import { useColors } from '@/hooks/use-colors';
 import type { ChartData, TimeRange } from '@/lib/types';
+import { AVAILABLE_CHART_RANGES } from '@/lib/constants';
 import { formatValue } from '@/lib/utils';
 import { Chart } from '@/components/ui/chart';
 import { ToggleGroup, ToggleItem } from '@/components/ui/toggle';
@@ -18,13 +19,6 @@ export interface ChartPaneProps {
   /** Callback for time range changes */
   onRangeChange: (range: TimeRange) => void;
 }
-
-/** Available time ranges */
-const RANGES: { key: TimeRange; label: string }[] = [
-  { key: '30d', label: '30 DAYS' },
-  { key: '90d', label: '90 DAYS' },
-  { key: '1y', label: '1 YEAR' },
-];
 
 /**
  * Chart pane component
@@ -49,7 +43,7 @@ export function ChartPane({
       {/* Controls */}
       <div className="self-start">
         <ToggleGroup>
-          {RANGES.map(({ key, label }) => (
+          {AVAILABLE_CHART_RANGES.map(({ key, label }) => (
             <ToggleItem
               key={key}
               isActive={range === key}

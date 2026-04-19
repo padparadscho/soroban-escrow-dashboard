@@ -13,6 +13,7 @@ import type {
   PageSize,
   TimeRange,
 } from '@/lib/types';
+import { AVAILABLE_PAGE_SIZES } from '@/lib/constants';
 import { CONFIG } from '@/lib/config';
 
 /**
@@ -115,9 +116,9 @@ function parseDataClaimAfter(dataJson: string | null): Date | null {
  * @returns A valid PageSize value, or the default if the input is invalid
  */
 export function normalizePageSize(value: number): PageSize {
-  const sizes = [20, 50, 100] as const;
-  if (sizes.includes(value as PageSize)) return value as PageSize;
-  return sizes[0];
+  if (AVAILABLE_PAGE_SIZES.includes(value as PageSize))
+    return value as PageSize;
+  return AVAILABLE_PAGE_SIZES[0];
 }
 
 /**
