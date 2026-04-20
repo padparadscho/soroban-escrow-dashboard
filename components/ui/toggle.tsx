@@ -4,6 +4,7 @@
 'use client';
 
 import { type ReactNode } from 'react';
+import { Button } from '@/components/ui/button';
 
 export interface ToggleGroupProps {
   /** Toggle group content */
@@ -56,18 +57,17 @@ export function ToggleItem({
   className,
 }: ToggleItemProps): ReactNode {
   return (
-    <button
-      type="button"
+    <Button
       onClick={onClick}
       className={[
-        'cursor-pointer border-r border-border px-3 py-1 text-xs whitespace-nowrap last:border-r-0 font-medium transition-colors duration-150',
+        'rounded-none! border-y-0! border-l-0! border-r! border-border! last:border-r-0! px-3! whitespace-nowrap duration-150',
         isActive
-          ? 'bg-secondary font-semibold text-foreground'
-          : 'text-muted-foreground hover:bg-accent',
+          ? 'bg-secondary! font-semibold text-foreground! hover:bg-secondary!'
+          : 'bg-transparent! text-muted-foreground! hover:bg-accent! hover:border-border!',
         className ?? '',
       ].join(' ')}
     >
       {children}
-    </button>
+    </Button>
   );
 }

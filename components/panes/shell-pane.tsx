@@ -4,6 +4,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import { Button } from '@/components/ui/button';
 import { FullViewIcon, NormalViewIcon } from '@/components/icons/view';
 
 export interface ShellProps {
@@ -53,15 +54,12 @@ export function ShellPane({
           {title}
         </h2>
         {expandable && (
-          <button
-            type="button"
+          <Button
             onClick={onExpandToggle}
             aria-label={
               expanded ? `Collapse ${title} pane` : `Expand ${title} pane`
             }
-            className={[
-              'inline-flex shrink-0 cursor-pointer items-center justify-center size-6 rounded-md transition-[border-color,background,color] duration-150 ease-out hover:bg-accent',
-            ].join(' ')}
+            className="shrink-0 justify-center p-0! size-6! border-transparent! bg-transparent! transition-[border-color,background,color] duration-150 ease-out hover:bg-accent!"
           >
             {expanded ? (
               <NormalViewIcon
@@ -74,7 +72,7 @@ export function ShellPane({
                 aria-hidden="true"
               />
             )}
-          </button>
+          </Button>
         )}
       </header>
       <div className={['flex flex-col min-h-0 p-2 overflow-hidden'].join(' ')}>
