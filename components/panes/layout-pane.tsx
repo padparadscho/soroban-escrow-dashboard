@@ -114,9 +114,10 @@ export function PaneLayout({
         {/* Chart pane */}
         <ShellPane
           title="Chart"
-          expanded={expanded === 'chart'}
-          dimmed={isExpanded && expanded !== 'chart'}
-          onExpandToggle={() => toggle('chart')}
+          expanded={false}
+          dimmed={isExpanded}
+          onExpandToggle={() => {}}
+          expandable={false}
           gridArea="chart"
         >
           <ChartPane
