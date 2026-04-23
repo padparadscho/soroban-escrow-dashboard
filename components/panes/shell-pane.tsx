@@ -53,7 +53,7 @@ export function ShellPane({
       }}
       style={gridArea ? { gridArea } : undefined}
       className={[
-        'grid min-h-0 grid-rows-[auto_1fr] rounded-md border border-border bg-pane shadow-sm overflow-hidden',
+        'grid min-h-0 grid-rows-[auto_1fr] rounded-md border border-border bg-pane shadow-sm overflow-hidden hover:border-accent-foreground transition-colors duration-200',
         expanded ? 'fixed inset-4 z-50' : 'relative z-1',
       ].join(' ')}
     >
