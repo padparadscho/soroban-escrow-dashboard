@@ -43,7 +43,7 @@ export function SummaryPane({
     <div className="flex flex-1 flex-col gap-3.5 min-h-0 overflow-hidden">
       {/* Stats */}
       <Scrolling className="grid grid-cols-2 gap-3">
-        <Card className="flex min-h-0 flex-col">
+        <Card className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150">
           <CardHeader>
             <CardTitle>Escrowed Amount</CardTitle>
           </CardHeader>
@@ -53,7 +53,7 @@ export function SummaryPane({
             </span>
           </CardContent>
         </Card>
-        <Card className="flex min-h-0 flex-col">
+        <Card className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150">
           <CardHeader>
             <CardTitle>Total Escrowed Value</CardTitle>
           </CardHeader>
@@ -65,7 +65,7 @@ export function SummaryPane({
             </span>
           </CardContent>
         </Card>
-        <Card className="flex min-h-0 flex-col">
+        <Card className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150">
           <CardHeader>
             <CardTitle>Unit Price</CardTitle>
             <Tooltip content={'Current DEX price.'}>
@@ -80,7 +80,7 @@ export function SummaryPane({
             </span>
           </CardContent>
         </Card>
-        <Card className="flex min-h-0 flex-col">
+        <Card className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150">
           <CardHeader>
             <CardTitle>Total Escrows</CardTitle>
           </CardHeader>
@@ -90,7 +90,7 @@ export function SummaryPane({
             </span>
           </CardContent>
         </Card>
-        <Card className="flex min-h-0 flex-col">
+        <Card className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150">
           <CardHeader>
             <CardTitle>Escrow Contract</CardTitle>
           </CardHeader>
@@ -106,7 +106,7 @@ export function SummaryPane({
             </a>
           </CardContent>
         </Card>
-        <Card className="flex min-h-0 flex-col">
+        <Card className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150">
           <CardHeader>
             <CardTitle>Asset Contract</CardTitle>
           </CardHeader>
