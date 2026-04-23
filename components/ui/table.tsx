@@ -2,12 +2,21 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 import type { ReactNode } from 'react';
+import { motion, type Variants } from 'motion/react';
 
 export interface TableProps {
   /** Table content */
   children?: ReactNode;
   /** Additional CSS classes */
   className?: string;
+  /** Motion variants */
+  variants?: Variants;
+  /** Motion initial state */
+  initial?: string | boolean;
+  /** Motion animate state */
+  animate?: string;
+  /** Motion key */
+  motionKey?: string | number;
 }
 
 /**
@@ -30,8 +39,25 @@ export function Table({ children, className }: TableProps): ReactNode {
  * @param props {@link TableProps}
  * @returns {ReactNode}
  */
-export function TableBody({ children, className }: TableProps): ReactNode {
-  return <tbody className={className}>{children}</tbody>;
+export function TableBody({
+  children,
+  className,
+  variants,
+  initial,
+  animate,
+  motionKey,
+}: TableProps): ReactNode {
+  return (
+    <motion.tbody
+      variants={variants}
+      initial={initial}
+      animate={animate}
+      key={motionKey}
+      className={className}
+    >
+      {children}
+    </motion.tbody>
+  );
 }
 
 /**
@@ -39,16 +65,27 @@ export function TableBody({ children, className }: TableProps): ReactNode {
  * @param props {@link TableProps}
  * @returns {ReactNode}
  */
-export function TableRow({ children, className }: TableProps): ReactNode {
+export function TableRow({
+  children,
+  className,
+  variants,
+  initial,
+  animate,
+  motionKey,
+}: TableProps): ReactNode {
   return (
-    <tr
+    <motion.tr
+      variants={variants}
+      initial={initial}
+      animate={animate}
+      key={motionKey}
       className={[
         'border-b border-border hover:bg-muted/50 transition-colors',
         className ?? '',
       ].join(' ')}
     >
       {children}
-    </tr>
+    </motion.tr>
   );
 }
 

@@ -147,6 +147,44 @@ export function Chart({
         },
         interaction: { mode: 'nearest', intersect: false },
         spanGaps: true,
+        animation: {
+          x: {
+            type: 'number',
+            easing: 'easeOutQuart',
+            duration: 400,
+            from: (ctx: {
+              index: number;
+              chart: ChartJS;
+              datasetIndex: number;
+            }) => {
+              if (ctx.index === 0)
+                return ctx.chart.scales.x.getPixelForValue(data[0].x);
+              return ctx.chart
+                .getDatasetMeta(ctx.datasetIndex)
+                .data[ctx.index - 1].getProps(['x'], true).x;
+            },
+          },
+          y: {
+            type: 'number',
+            easing: 'easeOutQuart',
+            duration: 400,
+            from: (ctx: {
+              index: number;
+              chart: ChartJS;
+              datasetIndex: number;
+            }) => {
+              if (ctx.index === 0)
+                return ctx.chart.scales.y.getPixelForValue(0);
+              return ctx.chart
+                .getDatasetMeta(ctx.datasetIndex)
+                .data[ctx.index - 1].getProps(['y'], true).y;
+            },
+            delay(ctx: { type: string; index: number }) {
+              if (ctx.type !== 'data') return 0;
+              return ctx.index * 30;
+            },
+          },
+        } as Record<string, unknown>,
       },
     });
 

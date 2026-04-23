@@ -4,6 +4,8 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import { motion } from 'motion/react';
+import { variants } from '@/lib/motion/variants';
 import { Button } from '@/components/ui/button';
 import { FullViewIcon, NormalViewIcon } from '@/components/icons/view';
 
@@ -39,14 +41,20 @@ export function ShellPane({
   gridArea,
 }: ShellProps): ReactNode {
   return (
-    <section
+    <motion.section
+      variants={variants}
+      initial={false}
+      animate={expanded ? 'expanded' : dimmed ? 'dimmed' : 'collapsed'}
+      layout
+      transition={{
+        layout: { duration: 0.5, ease: 'easeInOut' },
+        opacity: { duration: 0.2 },
+        scale: { type: 'spring', stiffness: 300, damping: 30 },
+      }}
       style={gridArea ? { gridArea } : undefined}
       className={[
-        expanded ? 'grid min-h-0' : 'relative z-1 grid min-h-0',
-        'grid-rows-[auto_1fr]',
-        'rounded-md border border-border bg-pane hover:border-accent-foreground transition-opacity duration-200',
-        expanded ? 'fixed inset-2 z-50' : '',
-        dimmed ? 'pointer-events-none opacity-0' : 'opacity-100',
+        'grid min-h-0 grid-rows-[auto_1fr] rounded-md border border-border bg-pane shadow-sm overflow-hidden hover:border-accent-foreground transition-colors duration-200',
+        expanded ? 'fixed inset-4 z-50' : 'relative z-1',
       ].join(' ')}
     >
       <header className="flex min-h-10 items-center justify-between gap-2 border-b border-border px-3">
@@ -78,6 +86,6 @@ export function ShellPane({
       <div className={['flex flex-col min-h-0 p-2 overflow-hidden'].join(' ')}>
         {children}
       </div>
-    </section>
+    </motion.section>
   );
 }

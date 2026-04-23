@@ -9,6 +9,7 @@ import type { ChartData, TimeRange } from '@/lib/types';
 import { AVAILABLE_CHART_RANGES } from '@/lib/constants';
 import { formatValue } from '@/lib/utils';
 import { Chart } from '@/components/ui/chart';
+import { Skeleton } from '@/components/ui/skeleton';
 import { ToggleGroup, ToggleItem } from '@/components/ui/toggle';
 
 export interface ChartPaneProps {
@@ -16,18 +17,16 @@ export interface ChartPaneProps {
   points: ChartData[];
   /** Selected time range */
   range: TimeRange;
+  /** Loading state */
+  loading?: boolean;
   /** Callback for time range changes */
   onRangeChange: (range: TimeRange) => void;
 }
 
-/**
- * Chart pane component
- * @param props {@link ChartPaneProps}
- * @returns {ReactNode}
- */
 export function ChartPane({
   points,
   range,
+  loading,
   onRangeChange,
 }: ChartPaneProps): ReactNode {
   const colors = useColors();
@@ -56,15 +55,19 @@ export function ChartPane({
       </div>
 
       {/* Chart */}
-      <Chart
-        data={chartData}
-        accentColor={colors.accent}
-        axisColor={colors.axis}
-        gridColor={colors.grid}
-        tooltipBackground={colors.tooltipBackground}
-        tooltipText={colors.tooltipText}
-        valueTick={formatValue}
-      />
+      {loading ? (
+        <Skeleton className="w-full h-full min-h-50" />
+      ) : (
+        <Chart
+          data={chartData}
+          accentColor={colors.accent}
+          axisColor={colors.axis}
+          gridColor={colors.grid}
+          tooltipBackground={colors.tooltipBackground}
+          tooltipText={colors.tooltipText}
+          valueTick={formatValue}
+        />
+      )}
     </div>
   );
 }
