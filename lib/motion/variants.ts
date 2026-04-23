@@ -19,3 +19,16 @@ export const variants: Variants = {
     pointerEvents: 'none',
   },
 };
+
+export const staggerParent: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.06 },
+  },
+};
+
+export const staggerChildren: Variants = {
+  hidden: { opacity: 0, y: 8 },
+  show: { opacity: 1, y: 0 },
+};

@@ -6,6 +6,7 @@
 import type { ReactNode } from 'react';
 import NextImage from 'next/image';
 import type { EventsData, PageSize } from '@/lib/types';
+import { staggerChildren, staggerParent } from '@/lib/motion/variants';
 import { AVAILABLE_PAGE_SIZES } from '@/lib/constants';
 import {
   formatAddress,
@@ -99,12 +100,21 @@ export function EventsPane({
       ) : (
         <Scrolling className="flex-1 min-h-0">
           <Table>
-            <TableBody>
+            <TableBody
+              variants={staggerParent}
+              initial="hidden"
+              animate="show"
+              motionKey={meta.page}
+            >
               {items.map((item) => {
                 const isTransfer = item.type === 'transfer';
                 const isLock = item.type === 'lock';
                 return (
-                  <TableRow key={item.id}>
+                  <TableRow
+                    key={item.id}
+                    motionKey={item.id}
+                    variants={staggerChildren}
+                  >
                     <TableCell>
                       <Badge
                         variant={item.type}

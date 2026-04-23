@@ -2,12 +2,21 @@
 // SPDX-License-Identifier: GPL-3.0-only
 
 import type { ReactNode } from 'react';
+import { motion, type Variants } from 'motion/react';
 
 export interface CardProps {
   /** Card content */
   children: ReactNode;
   /** Additional CSS classes */
   className?: string;
+  /** Motion variants */
+  variants?: Variants;
+  /** Motion initial state */
+  initial?: string | boolean;
+  /** Motion animate state */
+  animate?: string;
+  /** Motion key */
+  motionKey?: string | number;
 }
 
 /**
@@ -15,13 +24,24 @@ export interface CardProps {
  * @param props {@link CardProps}
  * @returns {ReactNode}
  */
-export function Card({ children, className }: CardProps): ReactNode {
+export function Card({
+  children,
+  className,
+  variants,
+  initial,
+  animate,
+  motionKey,
+}: CardProps): ReactNode {
   return (
-    <div
+    <motion.div
+      variants={variants}
+      initial={initial}
+      animate={animate}
+      key={motionKey}
       className={['rounded-md border border-border', className ?? ''].join(' ')}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
