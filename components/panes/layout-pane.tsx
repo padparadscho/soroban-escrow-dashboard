@@ -54,7 +54,7 @@ export function PaneLayout({
   });
   const [chartRange, setChartRange] = useState<TimeRange>(initialRange);
   const [isEventsLoading, startEventsTransition] = useTransition();
-  const [, startChartTransition] = useTransition();
+  const [isChartLoading, startChartTransition] = useTransition();
   const isExpanded = expanded !== null;
   const isMobile = useMobile();
 
@@ -123,6 +123,7 @@ export function PaneLayout({
           <ChartPane
             points={data.chart}
             range={chartRange}
+            loading={isChartLoading}
             onRangeChange={handleChartRangeChange}
           />
         </ShellPane>
