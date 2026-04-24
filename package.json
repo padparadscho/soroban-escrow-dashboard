@@ -26,6 +26,7 @@
   "license": "GPL-3.0-only",
   "dependencies": {
     "@vercel/analytics": "2.0.1",
+    "@vercel/speed-insights": "2.0.0",
     "chart.js": "4.5.1",
     "chartjs-adapter-date-fns": "3.0.0",
     "date-fns": "4.1.0",
