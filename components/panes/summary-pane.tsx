@@ -44,7 +44,7 @@ export function SummaryPane({
   return (
     <div className="flex flex-1 flex-col gap-3.5 min-h-0 overflow-hidden">
       {/* Stats */}
-      <Scrolling className="grid grid-cols-2 gap-3">
+      <Scrolling className="grid grid-cols-2 gap-2 sm:gap-3">
         <motion.div
           variants={staggerParent}
           initial="hidden"
@@ -55,11 +55,13 @@ export function SummaryPane({
             className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150"
             variants={staggerChildren}
           >
-            <CardHeader>
-              <CardTitle>Escrowed Amount</CardTitle>
+            <CardHeader className="px-2.5 sm:px-3 pt-2 sm:pt-2.5">
+              <CardTitle className="text-[0.625rem] sm:text-[0.6875rem]">
+                Escrowed Amount
+              </CardTitle>
             </CardHeader>
-            <CardContent>
-              <span className="font-mono text-[1.0625rem] font-semibold leading-tight tabular-nums text-foreground">
+            <CardContent className="px-2.5 sm:px-3 py-1.5 sm:py-2">
+              <span className="font-mono text-[0.9375rem] sm:text-[1.0625rem] font-semibold leading-tight tabular-nums text-foreground">
                 {summary.escrowAmount
                   ? formatAmount(summary.escrowAmount)
                   : '—'}
@@ -70,11 +72,13 @@ export function SummaryPane({
             className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150"
             variants={staggerChildren}
           >
-            <CardHeader>
-              <CardTitle>Total Escrowed Value</CardTitle>
+            <CardHeader className="px-2.5 sm:px-3 pt-2 sm:pt-2.5">
+              <CardTitle className="text-[0.625rem] sm:text-[0.6875rem]">
+                Escrowed Value
+              </CardTitle>
             </CardHeader>
-            <CardContent>
-              <span className="font-mono text-[1.0625rem] font-semibold leading-tight tabular-nums text-foreground">
+            <CardContent className="px-2.5 sm:px-3 py-1.5 sm:py-2">
+              <span className="font-mono text-[0.9375rem] sm:text-[1.0625rem] font-semibold leading-tight tabular-nums text-foreground">
                 {summary.escrowPrice
                   ? `$${Number(summary.escrowPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
                   : '—'}
@@ -85,14 +89,16 @@ export function SummaryPane({
             className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150"
             variants={staggerChildren}
           >
-            <CardHeader>
-              <CardTitle>Unit Price</CardTitle>
+            <CardHeader className="px-2.5 sm:px-3 pt-2 sm:pt-2.5">
+              <CardTitle className="text-[0.625rem] sm:text-[0.6875rem]">
+                Unit Price
+              </CardTitle>
               <Tooltip content={'Current DEX price.'}>
                 <InfoIcon className="size-3.5 fill-current text-muted-foreground" />
               </Tooltip>
             </CardHeader>
-            <CardContent>
-              <span className="font-mono text-[1.0625rem] font-semibold leading-tight tabular-nums text-foreground">
+            <CardContent className="px-2.5 sm:px-3 py-1.5 sm:py-2">
+              <span className="font-mono text-[0.9375rem] sm:text-[1.0625rem] font-semibold leading-tight tabular-nums text-foreground">
                 {summary.unitPrice
                   ? `$${Number(summary.unitPrice).toFixed(4)}`
                   : '—'}
@@ -103,11 +109,13 @@ export function SummaryPane({
             className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150"
             variants={staggerChildren}
           >
-            <CardHeader>
-              <CardTitle>Total Escrows</CardTitle>
+            <CardHeader className="px-2.5 sm:px-3 pt-2 sm:pt-2.5">
+              <CardTitle className="text-[0.625rem] sm:text-[0.6875rem]">
+                Total Escrows
+              </CardTitle>
             </CardHeader>
-            <CardContent>
-              <span className="font-mono text-[1.0625rem] font-semibold leading-tight tabular-nums text-foreground">
+            <CardContent className="px-2.5 sm:px-3 py-1.5 sm:py-2">
+              <span className="font-mono text-[0.9375rem] sm:text-[1.0625rem] font-semibold leading-tight tabular-nums text-foreground">
                 60
               </span>
             </CardContent>
@@ -116,10 +124,12 @@ export function SummaryPane({
             className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150"
             variants={staggerChildren}
           >
-            <CardHeader>
-              <CardTitle>Escrow Contract</CardTitle>
+            <CardHeader className="px-2.5 sm:px-3 pt-2 sm:pt-2.5">
+              <CardTitle className="text-[0.625rem] sm:text-[0.6875rem]">
+                Escrow Contract
+              </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-2.5 sm:px-3 py-1.5 sm:py-2">
               <a
                 href={escrowContractUrl}
                 target="_blank"
@@ -135,10 +145,12 @@ export function SummaryPane({
             className="flex min-h-0 flex-col hover:bg-muted transition-colors duration-150"
             variants={staggerChildren}
           >
-            <CardHeader>
-              <CardTitle>Asset Contract</CardTitle>
+            <CardHeader className="px-2.5 sm:px-3 pt-2 sm:pt-2.5">
+              <CardTitle className="text-[0.625rem] sm:text-[0.6875rem]">
+                Asset Contract
+              </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="px-2.5 sm:px-3 py-1.5 sm:py-2">
               <a
                 href={assetContractUrl}
                 target="_blank"
@@ -154,8 +166,8 @@ export function SummaryPane({
       </Scrolling>
 
       {/* Footer */}
-      <div className="mt-auto flex items-center justify-between gap-2 mb-1.5">
-        <div className="flex items-center justify-center gap-4 mx-1">
+      <div className="mt-auto flex flex-col sm:flex-row sm:justify-between items-center gap-2 mb-1.5">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mx-1">
           <a
             href={repository}
             target="_blank"
