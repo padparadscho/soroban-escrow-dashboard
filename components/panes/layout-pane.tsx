@@ -80,17 +80,6 @@ export function PaneLayout({
     });
   }, []);
 
-  // Sorry, not sorry :D
-  if (isMobile) {
-    return (
-      <div className="flex min-h-dvh items-center justify-center p-4">
-        <p className="text-center text-sm text-muted-foreground">
-          No mobile support, go to desktop :)
-        </p>
-      </div>
-    );
-  }
-
   return (
     <div className="dashboard-wrap">
       <main className="dashboard-grid">
@@ -102,6 +91,7 @@ export function PaneLayout({
           onExpandToggle={() => {}}
           expandable={false}
           gridArea="data"
+          isMobile={isMobile}
         >
           <SummaryPane
             summary={data.summary}
@@ -119,6 +109,7 @@ export function PaneLayout({
           onExpandToggle={() => {}}
           expandable={false}
           gridArea="chart"
+          isMobile={isMobile}
         >
           <ChartPane
             points={data.chart}
@@ -135,6 +126,7 @@ export function PaneLayout({
           dimmed={isExpanded && expanded !== 'events'}
           onExpandToggle={() => toggle('events')}
           gridArea="events"
+          isMobile={isMobile}
         >
           <EventsPane
             events={data.events}
