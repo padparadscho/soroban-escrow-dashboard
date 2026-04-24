@@ -7,9 +7,9 @@ import { useSyncExternalStore } from 'react';
 
 /**
  * Media query matching mobile viewport
- * (!) First iteration
+ * (!) Second iteration
  */
-const MOBILE_MEDIA_QUERY = '(max-width: 1023px) AND (orientation: portrait)';
+const MOBILE_MEDIA_QUERY = '(max-width: 1023px)';
 
 /**
  * Subscribe to viewport width changes
@@ -24,7 +24,7 @@ function subscribe(callback: () => void): () => void {
 
 /**
  * Get current viewport width state
- * @returns {boolean} `true` if mobile (<1024px or <768px) and vice versa, `false` otherwise
+ * @returns {boolean} `true` if mobile (<1024px), `false` otherwise
  */
 function getSnapshot(): boolean {
   return window.matchMedia(MOBILE_MEDIA_QUERY).matches;
