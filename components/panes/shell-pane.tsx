@@ -48,7 +48,7 @@ export function ShellPane({
       variants={variants}
       initial={false}
       animate={expanded ? 'expanded' : dimmed ? 'dimmed' : 'collapsed'}
-      layout
+      layout={!isMobile}
       transition={{
         layout: { duration: 0.5, ease: 'easeInOut' },
         opacity: { duration: 0.2 },
