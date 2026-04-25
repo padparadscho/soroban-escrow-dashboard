@@ -69,10 +69,10 @@ export function EventsPane({
             </ToggleItem>
           ))}
         </ToggleGroup>
-        <span className="flex h-full select-none items-center px-2.5 py-1 text-[0.6875rem] font-semibold tracking-[0.05em] whitespace-nowrap text-muted-foreground uppercase">
+        <span className="flex h-full select-none items-center px-2.5 py-1 text-[0.6875rem] font-semibold tracking-wider whitespace-nowrap text-muted-foreground uppercase">
           items per page
         </span>
-        <span className="ml-auto pr-4 text-[0.6875rem] font-semibold tracking-[0.05em] text-muted-foreground uppercase">
+        <span className="ml-auto pr-4 text-[0.6875rem] font-semibold tracking-wider text-muted-foreground uppercase">
           <span className="font-mono">{meta.totalItems.toLocaleString()}</span>{' '}
           events
         </span>
