@@ -56,7 +56,7 @@ export function ChartPane({
 
       {/* Chart */}
       {loading ? (
-        <Skeleton className="w-full h-full min-h-50" />
+        <Skeleton className="w-full h-full min-h-30" />
       ) : (
         <Chart
           data={chartData}

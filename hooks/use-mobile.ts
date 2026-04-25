@@ -1,11 +1,15 @@
 // SPDX-FileCopyrightText: 2026 Padparadscho <contact@padparadscho.com>
 // SPDX-License-Identifier: GPL-3.0-only
 
-// NOTE: Currently, it is used to block the mobile device support
-
 'use client';
 
 import { useSyncExternalStore } from 'react';
+
+/**
+ * Media query matching mobile viewport
+ * (!) Second iteration
+ */
+const MOBILE_MEDIA_QUERY = '(max-width: 1023px)';
 
 /**
  * Subscribe to viewport width changes
@@ -13,21 +17,17 @@ import { useSyncExternalStore } from 'react';
  * @returns Unsubscribe function
  */
 function subscribe(callback: () => void): () => void {
-  const mediaQuery = window.matchMedia(
-    '((width < 1024px) OR (height < 768px)) AND ((width < 768px) OR (height < 1024px))',
-  );
+  const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY);
   mediaQuery.addEventListener('change', callback);
   return () => mediaQuery.removeEventListener('change', callback);
 }
 
 /**
  * Get current viewport width state
- * @returns {boolean} `true` if mobile (<1024px or <768px) and vice versa, `false` otherwise
+ * @returns {boolean} `true` if mobile (<1024px), `false` otherwise
  */
 function getSnapshot(): boolean {
-  return window.matchMedia(
-    '((width < 1024px) OR (height < 768px)) AND ((width < 768px) OR (height < 1024px))',
-  ).matches;
+  return window.matchMedia(MOBILE_MEDIA_QUERY).matches;
 }
 
 /**

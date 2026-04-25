@@ -107,6 +107,23 @@ body {
     'events events';
 }
 
+@media (max-width: 1023px) {
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 2fr);
+    grid-template-areas:
+      'data'
+      'chart'
+      'events';
+  }
+
+  .dashboard-wrap {
+    height: auto;
+    min-height: 100dvh;
+    padding: 0.5rem;
+  }
+}
+
 /* Hide native scrollbar from viewport */
 .scroll-area-viewport {
   scrollbar-width: none;

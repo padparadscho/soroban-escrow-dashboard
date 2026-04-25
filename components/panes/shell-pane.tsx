@@ -24,6 +24,8 @@ export interface ShellProps {
   expandable?: boolean;
   /** CSS grid area for the pane */
   gridArea?: string;
+  /** Whether the viewport is in mobile mode */
+  isMobile?: boolean;
 }
 
 /**
@@ -39,13 +41,14 @@ export function ShellPane({
   onExpandToggle,
   expandable = true,
   gridArea,
+  isMobile,
 }: ShellProps): ReactNode {
   return (
     <motion.section
       variants={variants}
       initial={false}
       animate={expanded ? 'expanded' : dimmed ? 'dimmed' : 'collapsed'}
-      layout
+      layout={!isMobile}
       transition={{
         layout: { duration: 0.5, ease: 'easeInOut' },
         opacity: { duration: 0.2 },
@@ -54,7 +57,9 @@ export function ShellPane({
       style={gridArea ? { gridArea } : undefined}
       className={[
         'grid min-h-0 grid-rows-[auto_1fr] rounded-md border border-border bg-pane shadow-sm overflow-hidden hover:border-accent-foreground transition-colors duration-200',
-        expanded ? 'fixed inset-4 z-50' : 'relative z-1',
+        expanded
+          ? `fixed z-50 ${isMobile ? 'inset-2' : 'inset-4'}`
+          : 'relative z-1',
       ].join(' ')}
     >
       <header className="flex min-h-10 items-center justify-between gap-2 border-b border-border px-3">
