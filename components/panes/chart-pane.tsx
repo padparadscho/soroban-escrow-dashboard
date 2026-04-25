@@ -3,7 +3,7 @@
 
 'use client';
 
-import type { ReactNode } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import { useColors } from '@/hooks/use-colors';
 import type { ChartData, TimeRange } from '@/lib/types';
 import { AVAILABLE_CHART_RANGES } from '@/lib/constants';
@@ -31,11 +31,15 @@ export function ChartPane({
 }: ChartPaneProps): ReactNode {
   const colors = useColors();
 
-  const chartData = points.map((point) => ({
-    x: point.date.getTime(),
-    y: Number(point.balance) / 10 ** 7,
-    event: point.event,
-  }));
+  const chartData = useMemo(
+    () =>
+      points.map((point) => ({
+        x: point.date.getTime(),
+        y: Number(point.balance) / 10 ** 7,
+        event: point.event,
+      })),
+    [points],
+  );
 
   return (
     <div className="flex flex-col flex-1 min-h-0 gap-2.5">
